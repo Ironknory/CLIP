@@ -29,9 +29,13 @@ class Conf:
 
 		self.loss_function = kwargs.get('loss_function', F.cross_entropy)
 
+		# optional setting
+		self.valid_on = kwargs.get('valid_on', False)
+		self.pgd_on = kwargs.get('pgd_on', False)
 
-def plainExample(epochs=100, data_set=None, activate_function='sigmoid', device='cpu'):
-	conf_args = {'epochs': epochs, 'data_set': data_set, 'device': device,
+
+def plainExample(epochs=100, data_set=None, activate_function='sigmoid', device='cpu', valid_on=False, pgd_on=False):
+	conf_args = {'epochs': epochs, 'data_set': data_set, 'device': device, 'valid_on': valid_on, 'pgd_on': pgd_on,
 				 'activate_function': activate_function}
 	conf = Conf(**conf_args)
 	return conf
